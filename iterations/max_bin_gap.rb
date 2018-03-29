@@ -15,3 +15,9 @@ def max_bin_gap(n)
 
 	gaps.max
 end
+
+def test_max_bin_gap
+	[0, 592, 20, 15].each do |n|
+	  puts "n: #{n} bin: #{n.to_s(2)} gap: #{max_bin_gap(n)}"
+	end
+end
