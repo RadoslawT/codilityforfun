@@ -1,4 +1,6 @@
 def max_bin_gap(n)
+	return 0 if n == 0
+
 	gaps = []
 	gap  = 0
 
