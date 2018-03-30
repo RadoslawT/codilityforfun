@@ -1,6 +1,7 @@
 require 'benchmark'
 TEST_N_VALUES = [0, 592, 20, 15, 262153, 2145386752]
 
+# ITERATIVE METHOD
 def max_bin_gap_while(n)
   return 0 if n == 0
 
@@ -21,6 +22,7 @@ def max_bin_gap_while(n)
   gaps.max
 end
 
+# RECURSIVE METHOD
 def max_bin_gap_rec(n)
   return 0 if n == 0
   bin_gap(n.to_s(2).split('').map(&:to_i))
@@ -38,6 +40,16 @@ def bin_gap(bin_n)
   next_gap = bin_gap(bin_n[gap+1..-1])
 
   gap > next_gap ? gap : next_gap
+end
+
+# TESTS
+
+def run_all_tests
+  puts "Recursive:"
+  test_max_bin_gap_rec
+  puts "Iterative:"
+  test_max_bin_gap_while
+  test_time
 end
 
 def test_max_bin_gap_while
@@ -67,12 +79,4 @@ def test_time
 
  puts "Recursive: #{time_rec.real}s"
  puts "Iterative: #{time_it.real}s"
-end
-
-def run_all_tests
-  puts "Recursive:"
-  test_max_bin_gap_rec
-  puts "Iterative:"
-  test_max_bin_gap_while
-  test_time
 end
